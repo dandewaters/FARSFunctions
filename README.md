@@ -6,14 +6,18 @@ This is the second course project in the "Building an R Package" course in the "
  
  To install, make sure you have the devtools package installed and loaded. Then run the following command:
 
-  install_github("dandewaters/FARSFunctions")
-  library(FARSFunctions)
+```{r installation}
+install_github("dandewaters/FARSFunctions")
+library(FARSFunctions)
+```
 
 ## Vignettes
 
-To read the intro vignette by running the following command:
+Read the intro vignette by building with vignettes = TRUE and running the following command:
 
+```{r vignettes}
 vignette("Introduction", package="FARSFunctions")
+```
 
 ## Travis Badge
 [![Build Status](https://travis-ci.com/dandewaters/FARSFunctions.svg?branch=master)](https://travis-ci.com/dandewaters/FARSFunctions)
