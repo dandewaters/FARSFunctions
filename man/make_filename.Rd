@@ -13,7 +13,7 @@ make_filename(year)
 Returns a character string of the filename for the specified year.
 }
 \description{
-Creates a filename to be read in with specified FARS data. Not exported.
+Creates a filename to be read in with specified FARS data.
 }
 \examples{
 \dontrun{make_filename(2015)}

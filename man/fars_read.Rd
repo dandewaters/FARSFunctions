@@ -13,7 +13,7 @@ fars_read(filename)
 This function returns a data frame table of the FARS data.
 }
 \description{
-Read in a Facility Analysis Reporting System data file. Not exported.
+Read in a Facility Analysis Reporting System data file.
 }
 \details{
 Throws an error if file cannot be found.

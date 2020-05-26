@@ -19,7 +19,8 @@ test_that("Reads files correctly", {
 context("Summarizing FARS Data is Correct")
 
 test_that("FARS Summarize Years is correct", {
-  df <- fars_summarize_years(2013:2015)
+  years <- 2013:2015
+  df <- fars_summarize_years(years)
   expect_that(nrow(df), equals(12))
   expect_that(ncol(df), equals(length(years) + 1))
   expect_that(names(df)[1], matches('MONTH'))

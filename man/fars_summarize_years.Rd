@@ -19,7 +19,7 @@ Counts the number of fatal motor vehicle accidents for each month of the specifi
 Throws an error if specified years are invalid.
 }
 \examples{
-\dontrun{fars_summarize_years(2013,2014,2015)}
+\dontrun{fars_summarize_years(c(2013,2014,2015))}
 
 }
 \seealso{

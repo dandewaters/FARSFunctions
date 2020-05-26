@@ -1,6 +1,6 @@
 #' @title Read in FARS data file
 #'
-#' @description Read in a Facility Analysis Reporting System data file. Not exported.
+#' @description Read in a Facility Analysis Reporting System data file.
 #'
 #' @details Throws an error if file cannot be found.
 #'
@@ -16,6 +16,7 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
 #'
+#' @export
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -29,7 +30,7 @@ fars_read <- function(filename) {
 
 #' @title Make a file name for data in a specific year
 #'
-#' @description Creates a filename to be read in with specified FARS data. Not exported.
+#' @description Creates a filename to be read in with specified FARS data.
 #'
 #' @param year Character String of the year that the data file is being made for.
 #'
@@ -40,6 +41,7 @@ fars_read <- function(filename) {
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
+#' @export
 make_filename <- function(year) {
   year <- as.integer(year)
   filename <- system.file("extdata", sprintf("accident_%d.csv.bz2", year),
@@ -63,8 +65,11 @@ make_filename <- function(year) {
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
+#' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom magrittr "%>%"
 #'
+#' @export
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
@@ -92,13 +97,15 @@ fars_read_years <- function(years) {
 #' @return Returns a tbl_df of the number of motor vehicle accidents for each selected year.
 #'
 #' @examples
-#' \dontrun{fars_summarize_years(2013,2014,2015)}
+#' \dontrun{fars_summarize_years(c(2013,2014,2015))}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr group_by
 #' @importFrom dplyr summarize
+#' @importFrom dplyr n
+#' @importFrom magrittr "%>%"
 #' @importFrom tidyr spread
 #'
 #' @export
