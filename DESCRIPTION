@@ -1,11 +1,26 @@
 Package: FARSFunctions
 Type: Package
-Title: What the Package Does (Title Case)
+Title: FARS Data Functions
 Version: 0.1.0
-Author: Who wrote it
+Author: Daniel DeWaters
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: This package contains a set of functions for using the FARS Data,
+    for the final course project for the "Building R Packages" course of the
+    "Building R Packages" specialization provided by Johns Hopkins University
+    on Coursera.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
+Imports:
+    dplyr (>= 0.5.0),
+    mapdata (>= 2.2-6),
+    maps (>= 3.1.1), 
+    magrittr (>= 1.5),
+    readr (>= 1.0.0), 
+    tidyr (>= 0.6.0),
+    tibble (>= 1.2)
+Suggests: knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

@@ -8,12 +8,13 @@
 #'
 #' @return This function returns a data frame table of the FARS data.
 #'
-#' @example \dontrun{fars_read("accident_2015.csv.bz2")}
+#' @examples
+#' \dontrun{fars_read("accident_2015.csv.bz2")}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
 #' @importFrom readr read_csv
-#' @importFrom deplyr tbl_df
+#' @importFrom dplyr tbl_df
 #'
 fars_read <- function(filename) {
   if(!file.exists(filename))
@@ -34,15 +35,19 @@ fars_read <- function(filename) {
 #'
 #' @return Returns a character string of the filename for the specified year.
 #'
-#' @example \dontrun{make_filename(2015)}
+#' @examples
+#' \dontrun{make_filename(2015)}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
 make_filename <- function(year) {
   year <- as.integer(year)
-  sprintf("accident_%d.csv.bz2", year)
+  filename <- sprintf("accident_%d.csv.bz2", year)
+  print(filename)
+  full_filename <- system.file("inst", "extdata", filename, package = "FARSFunctions", mustWork=TRUE)
+  full_filename
 }
-
+make_filename(2015)
 
 
 #' @title Read in Facility Analysis Reporting System data for selected years
@@ -55,7 +60,8 @@ make_filename <- function(year) {
 #'
 #' @return Returns a list of tibbles of the FARS data for each month of the selected years.
 #'
-#' @example \dontrun{fars_read_years(c(2013, 2014, 2015))}
+#' @examples
+#' \dontrun{fars_read_years(c(2013, 2014, 2015))}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
@@ -87,7 +93,8 @@ fars_read_years <- function(years) {
 #'
 #' @return Returns a tbl_df of the number of motor vehicle accidents for each selected year.
 #'
-#' @example \dontrun{fars_summarize_years(2013,2014,2015)}
+#' @examples
+#' \dontrun{fars_summarize_years(2013,2014,2015)}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
@@ -119,7 +126,8 @@ fars_summarize_years <- function(years) {
 #'
 #' @return A map of a state with points of GPS coordinates of motor vehicle accidents from a specific year.
 #'
-#' @example \dontrun{fars_map_state(15, 2013)}
+#' @examples
+#' \dontrun{fars_map_state(15, 2013)}
 #'
 #' @seealso \url{https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)}
 #'
