@@ -42,12 +42,10 @@ fars_read <- function(filename) {
 #'
 make_filename <- function(year) {
   year <- as.integer(year)
-  filename <- sprintf("accident_%d.csv.bz2", year)
-  print(filename)
-  full_filename <- system.file("inst", "extdata", filename, package = "FARSFunctions", mustWork=TRUE)
-  full_filename
+  filename <- system.file("extdata", sprintf("accident_%d.csv.bz2", year),
+                               package = "FARSFunctions", mustWork=TRUE)
+  filename
 }
-make_filename(2015)
 
 
 #' @title Read in Facility Analysis Reporting System data for selected years
